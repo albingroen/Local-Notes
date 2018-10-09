@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link, Redirect } from "react-router-dom";
 import styled from "styled-components";
-import { H3 } from "wopify-design";
 
 const SidebarWrapper = styled.div`
   height: 100vh;
@@ -55,7 +54,7 @@ class Sidebar extends Component {
 
     return (
       <SidebarWrapper>
-        <H3>Notes</H3>
+        <h3>Notes</h3>
         <List>
           {notes.map(note => {
             return (
