@@ -6,8 +6,6 @@ A east-to-use local and private Notes-App without any bells and whistles.
 Clone project and run
 
     cd server && npm install
-    
-Then run from project root again
 
     cd client && npm install
 
@@ -23,6 +21,6 @@ Run project
 
     cd server && npm start
     
-    cd client && node index.js
+    cd client && node server.js
 
 
