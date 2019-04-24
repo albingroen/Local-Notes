@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import Sidebar from "./Components/sidebar";
@@ -46,7 +46,10 @@ export default class Routes extends React.Component {
     axios
       .post("http://localhost:5000/note")
       .then(response => {
-        this.setState({ notes: response.data });
+        this.setState({
+          notes: response.data
+        });
+        window.location.replace(`/${response.data[0]._id}`);
       })
       .catch(err => console.log(err));
   }
@@ -54,7 +57,10 @@ export default class Routes extends React.Component {
   deleteNote(noteId) {
     axios
       .delete(`http://localhost:5000/note/${noteId}/delete`)
-      .then(response => this.setState({ notes: response.data }))
+      .then(response => {
+        this.setState({ notes: response.data });
+        window.location.replace("/");
+      })
       .catch(err => console.log(err));
   }
 
@@ -83,7 +89,9 @@ export default class Routes extends React.Component {
         <Template>
           <Sidebar
             deleteNote={noteId => this.deleteNote(noteId)}
-            newNote={() => this.newNote()}
+            newNote={() => {
+              this.newNote();
+            }}
             notes={this.state.notes}
           />
           <Content>
@@ -94,7 +102,7 @@ export default class Routes extends React.Component {
                 component={() => <Start notes={this.state.notes} />}
               />
               <Route
-                path="/note/:id"
+                path="/:id"
                 exact
                 message={this.state.message}
                 component={props => (

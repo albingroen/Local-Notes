@@ -10,12 +10,13 @@ router
       text: ""
     });
 
-    const notes = await Note.find();
+    const notes = await Note.find().sort({ createdAt: -1 });
 
     res.send(notes);
   })
   .get(async (req, res) => {
-    const notes = await Note.find();
+    const notes = await Note.find().sort({ createdAt: -1 });
+
     res.send(notes);
   });
 
@@ -28,7 +29,9 @@ router.delete("/:id/delete", async (req, res) => {
   await Note.findOne({ _id: req.params.id })
     .remove()
     .exec();
-  const notes = await Note.find();
+
+  const notes = await Note.find().sort({ createdAt: -1 });
+
   res.send(notes);
 });
 

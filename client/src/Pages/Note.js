@@ -42,7 +42,7 @@ class Note extends Component {
   }
 
   componentDidMount() {
-    const { match } = this.props;
+    const { match, newNote } = this.props;
     this.retrieveNoteData(match.params.id);
   }
 
@@ -87,7 +87,6 @@ class Note extends Component {
           value={title}
           onChange={this.updateTitle}
         />
-        {/* <textarea type="text" value={text} onChange={this.updateText} /> */}
         <TextareaAutosize
           value={text}
           onChange={this.updateText}

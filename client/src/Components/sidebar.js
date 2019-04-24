@@ -58,7 +58,7 @@ class Sidebar extends Component {
         <List>
           {notes.map(note => {
             return (
-              <Link key={note._id} to={`/note/${note._id}`}>
+              <Link key={note._id} to={`/${note._id}`}>
                 <ListItem>
                   - {note.title}
                   <i>

@@ -26,7 +26,7 @@ injectGlobal`
     opacity: .8;
     line-height: 1.5em;
     letter-spacing: .3px;
-    border 0;
+    border: none;
     width: 100%;
     &:focus {
       outline: none;
